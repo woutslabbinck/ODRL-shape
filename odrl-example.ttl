@@ -1,0 +1,47 @@
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<urn:uuid:95efe0e8-4fb7-496d-8f3c-4d78c97829bc> a odrl:Set ;
+  odrl:uid <urn:uuid:95efe0e8-4fb7-496d-8f3c-4d78c97829bc> ;
+  odrl:permission <urn:uuid:f5199b0a-d824-45a0-bc08-1caa8d19a001>.
+
+<urn:uuid:f5199b0a-d824-45a0-bc08-1caa8d19a001> a odrl:Permission ;
+  odrl:action odrl:read ;
+  odrl:target ex:x ;
+  odrl:assignee ex:alice ;
+  odrl:assigner ex:zeno ;
+  odrl:constraint <urn:uuid:c9359a6f-06bf-4a99-afb0-62996ca78100> .
+
+<urn:uuid:c9359a6f-06bf-4a99-afb0-62996ca78100> a odrl:LogicalConstraint ;
+    odrl:and <urn:uuid:c1a4d116-2777-4598-847d-8fbebf8eb535>, <urn:uuid:49e4be66-54ef-45e0-8fac-5d5eb58c23fd> .
+
+<urn:uuid:c1a4d116-2777-4598-847d-8fbebf8eb535> a odrl:Constraint ;
+    odrl:leftOperand odrl:dateTime ;
+    odrl:operator odrl:gt ;
+    odrl:rightOperand "2024-01-01T00:00:00Z"^^xsd:dateTime .
+
+<urn:uuid:49e4be66-54ef-45e0-8fac-5d5eb58c23fd> a odrl:Constraint ;
+    odrl:leftOperand odrl:dateTime ;
+    odrl:operator odrl:lt ;
+    odrl:rightOperand "2024-12-31T00:00:00Z"^^xsd:dateTime .
+
+
+<urn:uuid:4d9afe2c-1b80-4bc2-8a87-4b33acff5bb2> a odrl:Set ;
+    odrl:uid <urn:uuid:4d9afe2c-1b80-4bc2-8a87-4b33acff5bb2> ;
+    odrl:prohibition <urn:uuid:d944a6c0-7bde-426d-b05a-db100e695d6e>.
+
+<urn:uuid:d944a6c0-7bde-426d-b05a-db100e695d6e> a odrl:Prohibition;
+    odrl:action odrl:read;
+    odrl:target ex:x;
+    odrl:assignee ex:alice;
+    odrl:assigner ex:zeno.
+
+<urn:uuid:ace8a53d-5845-4db6-a19b-9f842e9c1743> a odrl:Set ;
+    odrl:uid <urn:uuid:ace8a53d-5845-4db6-a19b-9f842e9c1743> ;
+    odrl:duty <urn:uuid:99ace1ad-cda1-4cb8-bfb2-e3de9ab14d95>.
+
+<urn:uuid:99ace1ad-cda1-4cb8-bfb2-e3de9ab14d95> a odrl:Duty;
+    odrl:action odrl:delete;
+    odrl:target ex:x;
+    odrl:assignee ex:alice.

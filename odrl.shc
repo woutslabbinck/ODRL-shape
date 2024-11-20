@@ -1,0 +1,55 @@
+PREFIX odrl:  <http://www.w3.org/ns/odrl/2/>
+PREFIX ex: <http://example.com/ns#>
+
+shape ex:odrlPolicy -> odrl:Policy odrl:Set odrl:Agreement odrl:Offer {
+    odrl:uid IRI [1..1] .
+    (odrl:permission | odrl:prohibition | odrl:duty ) odrl:Permission | odrl:Prohibition | odrl:Duty [1..*] . 
+
+    odrl:profile IRI [0..*] .
+    odrl:inheritFrom IRI [0..*] .
+    odrl:conflict IRI [0..*] .
+
+    # TODO: optional like properties which are shared and common to all its Rules
+}
+
+shape ex:odrlRule -> odrl:Permission odrl:Duty odrl:Prohibition {
+    odrl:action odrl:Action [1..1] . 
+
+    odrl:assigner IRI [0..1] .
+    odrl:assignee IRI [0..1] .
+    odrl:constraint odrl:Constraint | odrl:LogicalConstraint [0..*] .
+
+    # TODO: optionals: relation, function, failure, uid
+}
+
+shape ex:odrlPermission -> odrl:Permission {
+    odrl:target IRI [1..1] . # TODO: make odrl:Party (though maybe not possible)
+
+    odrl:duty odrl:Duty [0..*] .
+
+}
+
+shape ex:odrlProhibition -> odrl:Prohibition {
+    odrl:target IRI [1..1] .
+
+    odrl:remedy odrl:Duty [0..*] .
+}
+
+shape ex:odrlDuty -> odrl:Duty {
+    odrl:target IRI [0..1] .
+
+    odrl:consequence odrl:Duty [0..*] .
+}
+
+shape ex:Constraint -> odrl:Constraint {
+    odrl:leftOperand odrl:LeftOperand [1..1] .
+    odrl:rightOperand odrl:rightOperand | Literal | IRI [1..1] .
+    odrl:operator odrl:Operator [1..1] .
+
+    # TODO: optionals
+}
+
+shape ex:LogicalConstraint -> odrl:LogicalConstraint {
+    (odrl:or | odrl:xone | odrl:and | odrl:andSequence) odrl:Constraint | odrl:LogicalConstraint [0..*] . # NOTE: I also allow for ODRL logical constraints
+    # TODO: optionals
+}

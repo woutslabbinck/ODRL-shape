@@ -26,8 +26,11 @@ files:
 scripts:
 - [create-shacl.ts](./create-shacl.ts): Script that creates the SHACL shape from SHACLC  (`odrl.sch` -> `odrl-shacl.ttl`)
   - `npx ts-node create-shacl.ts`
-- [index.ts](./index.ts): Scrip that validates the ODRL policies using the ODRL SHACL shape using [rdf-validate-shacl](https://github.com/zazuko/rdf-validate-shacl) and [shacl-engine](https://github.com/rdf-ext/shacl-engine)
+- [index.ts](./index.ts): Script that validates the ODRL policies using the ODRL SHACL shape using [rdf-validate-shacl](https://github.com/zazuko/rdf-validate-shacl) and [shacl-engine](https://github.com/rdf-ext/shacl-engine)
   - `npx ts-node index.ts`
+- [index-esm.ts](./index-esm.ts): ESM script that validates the ODRL policies using the ODRL SHACL shape using [rdf-validate-shacl](https://github.com/zazuko/rdf-validate-shacl) and [shacl-engine](https://github.com/rdf-ext/shacl-engine).
+  - requires your package.json to contain the following property: `"type": "module",`
+  - `npx ts-node index-esm.ts`
 
 ## Feedback and questions
 

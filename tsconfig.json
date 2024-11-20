@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "module": "NodeNext", // required for ESM and commonjs library combination: https://stackoverflow.com/questions/71463698/why-we-need-nodenext-typescript-compiler-option-when-we-have-esnext
+      "downlevelIteration": true
+    },
+    "exclude": [
+      "node_modules"
+    ]
+  }
